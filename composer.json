@@ -1,0 +1,13 @@
+{
+    "name": "hadi/php-bot",
+    "authors": [
+        {
+            "name": "Hadi",
+            "email": "hadi.haghighizadeh@gmail.com"
+        }
+    ],
+    "require": {
+        "longman/telegram-bot": "^0.71.0",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
