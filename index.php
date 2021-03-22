@@ -23,9 +23,13 @@ try {
     // Handle telegram getUpdates request
     $a = $telegram->handleGetUpdates();
     echo $a;
-} catch (Longman\TelegramBot\Exception\TelegramException $e) {
+} catch (Exception $e) {
     // log telegram errors
+    if ($e instanceof Longman\TelegramBot\Exception\TelegramException){
+        echo "telegram exception\n";
+    }
      echo $e->getMessage();
+
 }
 
 echo '<h1>Hello world</h1>';
