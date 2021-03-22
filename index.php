@@ -3,9 +3,9 @@ require __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$bot_api_key  = $_ENV['BOT_API_KEY'];
-$bot_username = $_ENV['BOT_USERNAME'];
-
+$bot_api_key  = isset($_ENV['BOT_API_KEY']) ? $_ENV['BOT_API_KEY'] : null;
+$bot_username = isset($_ENV['BOT_USERNAME']) ? $_ENV['BOT_USERNAME']: null;
+echo $bot_username . '55';
 //$mysql_credentials = [
 //    'host'     => 'localhost',
 //    'port'     => 3306, // optional
