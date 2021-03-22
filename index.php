@@ -1,11 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+//$dotenv->load();
 
-$bot_api_key  = isset($_ENV['BOT_API_KEY']) ? $_ENV['BOT_API_KEY'] : null;
-$bot_username = isset($_ENV['BOT_USERNAME']) ? $_ENV['BOT_USERNAME']: null;
-echo $bot_username . '55';
+$bot_api_key  = isset($_ENV['BOT_API_KEY']) ? $_ENV['BOT_API_KEY'] : getenv('BOT_API_KEY');
+$bot_username = isset($_ENV['BOT_USERNAME']) ? $_ENV['BOT_USERNAME']: getenv('BOT_USERNAME');
+echo $bot_username . "55\n";
 //$mysql_credentials = [
 //    'host'     => 'localhost',
 //    'port'     => 3306, // optional
@@ -28,7 +28,7 @@ try {
     if ($e instanceof Longman\TelegramBot\Exception\TelegramException){
         echo "telegram exception\n";
     }
-     echo $e->getMessage();
+     echo $e->getMessage()."\n";
 
 }
 
