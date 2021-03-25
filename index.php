@@ -31,6 +31,9 @@ try {
 
         $sText = $oMessage->getText();
         echo $sText;
+        print "sdf\n";
+        print "sdf\n";
+        print "sdf\n";
     }else{
         echo "request nadarim\n";
     }
