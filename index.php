@@ -16,30 +16,41 @@ $bot_username = isset($_ENV['BOT_USERNAME']) ? $_ENV['BOT_USERNAME']: getenv('BO
 //];
 
 try {
+    $path = "https://api.telegram.org/bot$bot_api_key";
 
-    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+    $update = json_decode(file_get_contents("php://input"), TRUE);
+    $chatId = $update["message"]["chat"]["id"];
+    $message = $update["message"]["text"];
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=salamasdfasdf");
+//    if (strpos($message, "/weather") === 0) {
+//        $location = substr($message, 9);
+//        $weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=mytoken"), TRUE)["weather"][0]["main"];
+//        file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=Here's the weather in ".$location.": ". $weather);
+//    }
 
-    $telegram->enableLimiter();
-    print "sdf\n";
-    print "sdf\n";
-    print "sdf\n";
-    echo "sdf\n";
-    if (Request::getInput()){
-        $post = json_decode(Request::getInput(), true);
-
-
-        $oUpdate = new Update($post, $bot_username);
-        $oMessage = $oUpdate->getMessage();
-
-
-        $sText = $oMessage->getText();
-        echo $sText;
-        print "sdf\n";
-        print "sdf\n";
-        print "sdf\n";
-    }else{
-        echo "request nadarim\n";
-    }
+//    $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
+//
+//    $telegram->enableLimiter();
+//    print "sdf\n";
+//    print "sdf\n";
+//    print "sdf\n";
+//    echo "sdf\n";
+//    if (Request::getInput()){
+//        $post = json_decode(Request::getInput(), true);
+//
+//
+//        $oUpdate = new Update($post, $bot_username);
+//        $oMessage = $oUpdate->getMessage();
+//
+//
+//        $sText = $oMessage->getText();
+//        echo $sText;
+//        print "sdf\n";
+//        print "sdf\n";
+//        print "sdf\n";
+//    }else{
+//        echo "request nadarim\n";
+//    }
 //    if (strpos($sText, '@'.$yourUsername) !== false
 //        || (isset($post['reply_to_message'])
 //            && $post['reply_to_message']['from']['username'] == $yourUsername)) {
