@@ -21,15 +21,19 @@ try {
 
     $telegram->enableLimiter();
 
-    $post = json_decode(Request::getInput(), true);
+    if (Request::getInput()){
+        $post = json_decode(Request::getInput(), true);
 
 
-    $oUpdate = new Update($post, $bot_username);
-    $oMessage = $oUpdate->getMessage();
+        $oUpdate = new Update($post, $bot_username);
+        $oMessage = $oUpdate->getMessage();
 
 
-    $sText = $oMessage->getText();
-    echo $sText;
+        $sText = $oMessage->getText();
+        echo $sText;
+    }else{
+        echo "request nadarim\n";
+    }
 //    if (strpos($sText, '@'.$yourUsername) !== false
 //        || (isset($post['reply_to_message'])
 //            && $post['reply_to_message']['from']['username'] == $yourUsername)) {
