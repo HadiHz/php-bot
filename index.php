@@ -20,7 +20,10 @@ try {
     $telegram = new Longman\TelegramBot\Telegram($bot_api_key, $bot_username);
 
     $telegram->enableLimiter();
-
+    print "sdf\n";
+    print "sdf\n";
+    print "sdf\n";
+    echo "sdf\n";
     if (Request::getInput()){
         $post = json_decode(Request::getInput(), true);
 
