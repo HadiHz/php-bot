@@ -15,13 +15,23 @@ $bot_username = isset($_ENV['BOT_USERNAME']) ? $_ENV['BOT_USERNAME']: getenv('BO
 //    'database' => 'dbname',
 //];
 
+$getDollarApiPath = 'https://api.accessban.com/v1/data/sana/json';
+
 try {
     $path = "https://api.telegram.org/bot$bot_api_key";
 
     $update = json_decode(file_get_contents("php://input"), TRUE);
     $chatId = $update["message"]["chat"]["id"];
     $message = $update["message"]["text"];
-    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=salamasdfasdf");
+    if ($message === 'دلار'){
+        $jsonData = file_get_contents('https://api.accessban.com/v1/data/sana/json');
+        $jsonData = json_decode($jsonData);
+        $dollarPrice = number_format($jsonData->sana->data[0]->p);
+        $text = "قیمت دلار امروز $dollarPrice ریال ";
+    }else{
+        $text = 'بنویس دلار تا بهت قیمت دلار رو به ریال بگم!';
+    }
+    file_get_contents($path."/sendmessage?chat_id=".$chatId."&text=$text");
 //    if (strpos($message, "/weather") === 0) {
 //        $location = substr($message, 9);
 //        $weather = json_decode(file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".$location."&appid=mytoken"), TRUE)["weather"][0]["main"];
